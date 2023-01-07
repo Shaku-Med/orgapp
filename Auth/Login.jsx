@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
+  ActivityIndicator,
   Alert,
   Animated,
   ImageBackground,
@@ -23,8 +24,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import CryptoJS from "react-native-crypto-js";
 import uuid from 'react-native-uuid';
+import { Connect } from "../Connect";
 
 function Login({ navigation }) {
+
+  const {auth, setauth} = useContext(Connect)
+
   const demension = useWindowDimensions();
 
   const fadeAnim = useRef(new Animated.Value(Platform.OS === "ios" ? 150 : 165)).current;
@@ -36,6 +41,8 @@ function Login({ navigation }) {
   });
 
   const [animatestate, setanistate] = useState(0);
+
+
 
   const fadeIn = (e) => {
     if (animatestate === 1) {
@@ -75,6 +82,8 @@ const pat = [
 ]
 
 
+const [ind, setind] = useState(false)
+
 
 const handle_submit = e => { 
     let emailreg = /^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/
@@ -99,30 +108,38 @@ const handle_submit = e => {
         Alert.alert("Error!", "Invalid pass length")
     }
     else { 
-        axios.post("http://192.168.1.43:3001/signup", { 
-            names: CryptoJS.AES.encrypt(names, "La:?balumo#ham$ed01234:#?").toString(),
-            email: CryptoJS.AES.encrypt(email, "La:?balumo#ham$ed01234:#?").toString(),
-            pass: CryptoJS.AES.encrypt(pass, "La:?balumo#ham$ed01234:#?").toString(),
-            dob: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
-            edu: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
-            gend: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
-            bio: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
-            profilepic: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
-            coverpic: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
-            xs: CryptoJS.AES.encrypt(uuid.v4(), "La:?balumo#ham$ed01234:#?").toString(),
-            c_usr: CryptoJS.AES.encrypt(uuid.v4(), "La:?balumo#ham$ed01234:#?").toString(),
-        }).then(res => { 
+      setind(true)
+        axios.post("https://apsbackend.vercel.app/login", { 
+          email: CryptoJS.AES.encrypt(email, "La:?balumo#ham$ed01234:#?").toString(),
+          pass: CryptoJS.AES.encrypt(pass, "La:?balumo#ham$ed01234:#?").toString(),
+          dob: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
+          edu: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
+          gend: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
+          bio: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
+          profilepic: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
+          coverpic: CryptoJS.AES.encrypt('nothing', "La:?balumo#ham$ed01234:#?").toString(),
+          xs: CryptoJS.AES.encrypt(uuid.v4(), "La:?balumo#ham$ed01234:#?").toString(),
+          c_usr: CryptoJS.AES.encrypt(uuid.v4(), "La:?balumo#ham$ed01234:#?").toString(),
+          v_code: CryptoJS.AES.encrypt(uuid.v4().split('-')[0].toString().substring(0, 6), "La:?balumo#ham$ed01234:#?").toString(),
+          v_txt: CryptoJS.AES.encrypt("notverified", "La:?balumo#ham$ed01234:#?").toString(),
+        }).then(async res => { 
             if(res.data.success === "success"){ 
-                navigation.navigate("Login")
+               await AsyncStorage.setItem("c_usr", res.data.c_usr)
+               await AsyncStorage.setItem("xs", res.data.xs)
+
+               setauth(uuid.v4())
             }
             else { 
                 Vibration.vibrate(pat)
                 Alert.alert("Error!", res.data.success)
+                setind(false)
             }
         })
     }
 
   }
+
+
 
 
   useEffect(() => {
@@ -164,6 +181,16 @@ const handle_submit = e => {
       }
     };
     getSes();
+
+
+    const pme = async e => { 
+      let verify = await AsyncStorage.getItem('verify')
+      if(verify !== null){ 
+        navigation.navigate("Signup")
+      }
+    }
+
+    pme()
   }, []);
 
   return (
@@ -211,8 +238,8 @@ const handle_submit = e => {
           <View
             style={{
               width: demension.width,
-              maxWidth: Platform.OS === "ios" ? 350 : 450,
-              height: 350,
+              maxWidth: Platform.OS === "ios" ? 350 : 400,
+              height: Platform.OS === 'ios' ? 350 : 400,
               backgroundColor: "#141617",
               borderRadius: 10,
               overflow: "hidden",
@@ -293,30 +320,65 @@ const handle_submit = e => {
                 selectionColor={"white"}
               />
             </View>
-            <TouchableOpacity
-              onPress={handle_submit}
-              activeOpacity={0.5}
-              style={{
-                backgroundColor: "#242526",
-                fontSize: 20,
-                color: "white",
-                borderColor: "#393a3b",
-                borderWidth: 1,
-                borderRadius: 5,
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 25,
-                  color: "white",
-                  marginBottom: 10,
-                  marginTop: 10,
-                  textAlign: "center",
-                }}
-              >
-                Login
-              </Text>
-            </TouchableOpacity>
+            { 
+              [ind].map((v, k) => { 
+                if(v === false){ 
+                  return ( 
+                    <TouchableOpacity
+                    key={k}
+                    onPress={handle_submit}
+                    activeOpacity={0.5}
+                    style={{
+                      backgroundColor: "#242526",
+                      fontSize: 20,
+                      color: "white",
+                      borderColor: "#393a3b",
+                      borderWidth: 1,
+                      borderRadius: 5,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 25,
+                        color: "white",
+                        marginBottom: 10,
+                        marginTop: 10,
+                        textAlign: "center",
+                      }}
+                    >
+                      Login
+                    </Text>
+                  </TouchableOpacity>
+                  )
+                }
+                else { 
+                  return ( 
+                    <TouchableOpacity
+                    key={k}
+                    activeOpacity={0.5}
+                    style={{
+                      backgroundColor: "#242526",
+                      fontSize: 20,
+                      color: "white",
+                      borderColor: "#393a3b",
+                      borderWidth: 1,
+                      borderRadius: 5,
+                    }}
+                  >
+                   <Text  style={{
+                        fontSize: 25,
+                        color: "white",
+                        marginBottom: 10,
+                        marginTop: 10,
+                        textAlign: "center",
+                      }}>
+                    Preparing...
+                   </Text>
+                  </TouchableOpacity>
+                  )
+                }
+              })
+            }
           </View>
         </Pressable>
         <Animated.View

@@ -1,16 +1,17 @@
 {
   "expo": {
-    "name": "org",
-    "slug": "org",
-    "description": "Welcome! This is the New place where you're gonna do your organisation meetings and all.",
+    "name": "ors",
+    "slug": "medzy",
+    "privacy": "public",
     "version": "1.0.0",
+    "description": "hi everyone",
     "orientation": "portrait",
-    "icon": "./assets/mainlogo.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/mainlogo.png",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#000000"
+      "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -19,21 +20,27 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "bundleIdentifier": "com.meddi.ors",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Face ID is used to authenticate your login."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/mainlogo.png",
-        "backgroundColor": "#000"
-      }
+        "foregroundImage": "./assets/logo.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.meddi.ors"
     },
     "web": {
-      "favicon": "./assets/mainlogo.png"
+      "favicon": "./assets/logo.png"
     },
     "extra": {
       "eas": {
-        "projectId": "6fed8c36-e386-42c7-8b2f-7a25083b0727"
+        "projectId": "8fcf456d-774f-4632-bff8-40db3bed1896"
       }
-    }
+    },
+    "owner": "ioi"
   }
 }

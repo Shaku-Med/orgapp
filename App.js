@@ -4,7 +4,14 @@ import { Image, ImageBackground, Platform, StyleSheet, Text, useColorScheme, use
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Auth from './Auth/Auth';
 import Routing from './Routing';
+import { Connect } from './Connect';
+import Alldata from './Home/Alldata';
+import io from 'socket.io-client'
 
+
+const socket = new io("https://orgappbackend.mohamedbrima.repl.co", { 
+  reconnectionAttempts: 6
+})
 
 export default function App() {
 
@@ -17,6 +24,8 @@ export default function App() {
   const schme = useColorScheme()
 
   const demension = useWindowDimensions()
+
+  const [auth, setauth] = useState(0)
 
   useEffect(() => { 
     const getData = async () => { 
@@ -59,7 +68,15 @@ export default function App() {
     }, math);
 
 
-  }, [])
+  }, [auth])
+
+
+  // Actual stuff
+
+  const [owner, setowner] = useState([])
+  const [allusr, setallusr] = useState([])
+
+  const [resetstate, setresetstate] = useState(0)
 
   return (
     <>
@@ -67,7 +84,7 @@ export default function App() {
         [state].map((val, key) => { 
           if(val.payload === true){ 
             return ( 
-              <ImageBackground source={{uri: "https://media0.giphy.com/media/OK5LK5zLFfdm/giphy.gif?cid=ecf05e47cytw6uzgc99k7vdjg9zud5rskw3266kmad9jtcld&rid=giphy.gif&ct=g"}} key={key} style={{
+              <ImageBackground  source={{uri: "https://media0.giphy.com/media/OK5LK5zLFfdm/giphy.gif?cid=ecf05e47cytw6uzgc99k7vdjg9zud5rskw3266kmad9jtcld&rid=giphy.gif&ct=g"}} key={key} style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -84,12 +101,17 @@ export default function App() {
           else { 
             if(val.login === true){ 
               return ( 
-                <Auth key={key}/>
+               <Connect.Provider key={key} value={{auth, setauth}}>
+                   <Auth/>
+               </Connect.Provider>
               )
             }
             else { 
               return ( 
-                <Routing/>
+               <Connect.Provider  key={key} value={{auth, setauth, owner, setowner, resetstate, setresetstate, allusr, setallusr}}>
+                   <Alldata socket={socket}/>
+                   <Routing socket={socket}/>
+               </Connect.Provider>
               )
             }
           }
