@@ -140,7 +140,7 @@ export default function Home({navigation}) {
                       Haptic.impactAsync(Haptic.ImpactFeedbackStyle.Heavy)
                      }}
                       style={{
-                      backgroundColor: '#057bf1',
+                      backgroundColor: '#FF1493',
                       padding: 10,
                       borderRadius: 50,
                       width: 30,
@@ -196,7 +196,7 @@ export default function Home({navigation}) {
     }}>
          <ScrollView 
     contentContainerStyle={{
-      backgroundColor: "#393a3b",
+      backgroundColor: "#FF1493",
       width: demension.width,
     }}
     refreshControl={
@@ -209,7 +209,7 @@ export default function Home({navigation}) {
        blurRadius={10}
        style={{
         width: demension.width,
-        height: 200,
+        height: demension.height,
         justifyContent: 'center',
         padding: 20,
         alignItems: 'center'
@@ -270,7 +270,7 @@ export default function Home({navigation}) {
           width: demension.width,
           maxWidth: 350,
           borderRadius: 5,
-          borderColor: '#393a3b',
+          borderColor: '#FF1493',
           borderWidth: 1,
           shadowColor: '#000',
           shadowOffset: {width: -2, height: 4},
@@ -279,7 +279,7 @@ export default function Home({navigation}) {
           backgroundColor: '#242526'
         }}>
          <View style={{
-          borderBottomColor: '#393a3b',
+          borderBottomColor: '#FF1493',
           borderBottomWidth: 1,
           padding: 10
          }}>
@@ -288,7 +288,7 @@ export default function Home({navigation}) {
             fontWeight: 'bold',
             color: 'white',
             textAlign: 'center',
-            borderBottomColor: '#393a3b',
+            borderBottomColor: '#FF1493',
             borderBottomWidth: 1
           }}>
             ShortCut
@@ -296,7 +296,7 @@ export default function Home({navigation}) {
          </View>
           <View style={{
             padding: 15,
-            borderBottomColor: '#393a3b',
+            borderBottomColor: '#FF1493',
             borderBottomWidth: 1
           }}>
             <Text selectable style={{
@@ -330,16 +330,15 @@ export default function Home({navigation}) {
       {/*  */}
 
       <View  style={{
-          width: demension.width,
-          maxWidth: 350,
-          borderRadius: 5,
-          borderColor: '#393a3b',
+          justifyContent: "flex-start",
+          alignItems: 'center',
+          flexDirection: 'row',
+          width: '100%',
+          backgroundColor: '#FF1493',
           borderWidth: 1,
-          shadowColor: '#000',
-          shadowOffset: {width: -2, height: 4},
-          shadowOpacity: 0.2,
-          shadowRadius: 3,
-          backgroundColor: '#242526',
+          borderColor: '#3a3b3c',
+          borderRadius: 5,
+          overflow: 'hidden',
           padding: 10
         }}>
         <Text style={{
@@ -371,7 +370,7 @@ export default function Home({navigation}) {
                   alignItems: 'center',
                   flexDirection: 'row',
                   width: '100%',
-                  backgroundColor: '#242526',
+                  backgroundColor: '#FF1493',
                   borderWidth: 1,
                   borderColor: '#3a3b3c',
                   borderRadius: 5,

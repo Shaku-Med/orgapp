@@ -6,8 +6,8 @@ function Screen({onAuth}) {
     const colorScheme = useColorScheme()
 
   return (
-   <ImageBackground source={{uri: "https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/100507878_2610072155933527_621068420078632960_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=GMfAN3X6JOAAX_-IcB8&_nc_ht=scontent-lga3-2.xx&oh=00_AfCLyoK6LLpafCW3RVFN8Px-9DAI8X1UIfLtXXlzed3zHg&oe=63DC2893"}} 
-   blurRadius={200} style={{
+   <ImageBackground source={{uri: "https://static.dezeen.com/uploads/2017/08/tinder-redesign-graphics_dezeen_sq-1.jpg"}} 
+   blurRadius={50} style={{
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -15,15 +15,16 @@ function Screen({onAuth}) {
     height: "100%",
    }}>
     <Text style={{
-        color: 'white',
+        color: 'black',
         padding: 10,
         fontSize: 25,
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
+        maxWidth: 350,
     }}>
        Use your device to Authenticate your login.
     </Text>
-    <Button title='Authenticate' onPress={onAuth}/>
+    <Button color={"red"}  title='Authenticate' onPress={onAuth}/>
    </ImageBackground>
   )
 }

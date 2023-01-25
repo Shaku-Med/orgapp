@@ -13,7 +13,7 @@ function Edit({navigation}) {
         color: 'white'
     },
     headerStyle: { 
-        backgroundColor: "#242526"
+        backgroundColor: "#FF1493"
     },
     headerleftStyle: { 
         color: 'white'
@@ -22,7 +22,7 @@ function Edit({navigation}) {
 
   return (
     <View style={{
-        backgroundColor: "#3a3b3c",
+        backgroundColor: "#FF1493",
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -31,7 +31,7 @@ function Edit({navigation}) {
         padding: 10
     }}>
        <View style={{
-        borderBottomColor: 'gray',
+        borderBottomColor: 'white',
         borderBottomWidth: 1,
         width: '100%',
         maxWidth: 300,
@@ -242,7 +242,7 @@ function Edit({navigation}) {
         </View>
         {/*  */}
         <View style={{
-        borderBottomColor: 'gray',
+        borderBottomColor: 'white',
         borderBottomWidth: 1,
         width: '100%',
         maxWidth: 300,

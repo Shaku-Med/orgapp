@@ -15,7 +15,7 @@ import { Connect } from '../Connect';
 import io from 'socket.io-client'
 
 const socket = new io("https://orgappbackend.mohamedbrima.repl.co", { 
-  reconnectionAttempts: 6
+  reconnectionAttempts: 2
 })
 
 
@@ -133,7 +133,7 @@ export default function Chatting({navigation}) {
       overflow: 'scroll',
       height: '100%',
       width: '100%',
-      backgroundColor: "#3a3b3c"
+      backgroundColor: "black"
     }}>
      <ScrollView>
        { 
@@ -151,7 +151,7 @@ export default function Chatting({navigation}) {
                   flexDirection: 'row',
                   alignItems: 'center',
                   width: "100%",
-                  backgroundColor: '#181818',
+                  backgroundColor: '#FF1493',
                   padding: 5,
                   marginBottom: 1
                  }}>
@@ -182,7 +182,7 @@ export default function Chatting({navigation}) {
                         <View style={{maxWidth: 200}}>
                           <Text  numberOfLines={1} style={{
                             fontSize: 15,
-                            color: 'gray'
+                            color: 'white'
                           }}>
                            {socksta !== '' ? socksta === val.c_usr ? "Online" : "offline" : 'offline'}
                           </Text>

@@ -184,7 +184,7 @@ export default function Profile({navigation, route}) {
        <ImageBackground 
        style={{
         width: '100%',
-        height: 450,
+        height: 500,
         justifyContent: 'center',
         alignItems: 'center'
        }}
@@ -198,7 +198,7 @@ export default function Profile({navigation, route}) {
             width: 100,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#057bf1',
+            backgroundColor: '#FF1493',
             borderRadius: 200
           }}>
             <Text style={{
@@ -214,11 +214,11 @@ export default function Profile({navigation, route}) {
           :
           <Image 
         style={{
-          width: 150,
-          height: 150,
+          width: 200,
+          height: 200,
           borderRadius: 300,
           borderWidth: 1,
-          borderColor: 'gray'
+          borderColor: 'FF1493'
         }}
          source={{uri: profile !== null ? profile : CryptoJS.AES.decrypt(val.profilepic, "La:?balumo#ham$ed01234:#?").toString(CryptoJS.enc.Utf8)}} />
         }
@@ -234,10 +234,10 @@ export default function Profile({navigation, route}) {
           width: '100%',
           flexDirection: 'row',
           padding: 10,
-          backgroundColor: '#242526'
+          backgroundColor: '#FF1493'
         }}>
-            <Button onPress={pick_profilepic} title='Profilepic'/>
-            <Button onPress={pic_cover} title='Coverpic'/>
+            <Button color={"white"} onPress={pick_profilepic} title='Profilepic'/>
+            <Button color={"white"} onPress={pic_cover} title='Coverpic'/>
         </View>
        </View>
        {/*  */}

@@ -3,18 +3,19 @@
     "name": "ors",
     "slug": "medzy",
     "privacy": "public",
-    "version": "1.0.0",
-    "description": "hi everyone",
-    "orientation": "portrait",
-    "icon": "./assets/logo.png",
+    "version": "1.0.2",
+    "description": "Welcome to ORG APP",
+    "orientation": "default",
+    "icon": "./assets/tinder.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/logo.png",
-      "resizeMode": "contain",
+      "image": "./assets/tinder.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/8fcf456d-774f-4632-bff8-40db3bed1896"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -28,19 +29,22 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo.png",
+        "foregroundImage": "./assets/tinder.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.meddi.ors"
     },
     "web": {
-      "favicon": "./assets/logo.png"
+      "favicon": "./assets/tinder.png"
     },
     "extra": {
       "eas": {
         "projectId": "8fcf456d-774f-4632-bff8-40db3bed1896"
       }
     },
-    "owner": "ioi"
+    "owner": "ioi",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
   }
 }

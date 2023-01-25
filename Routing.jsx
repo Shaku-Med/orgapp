@@ -75,10 +75,10 @@ function Routing({navigation, socket}) {
       },
       tabBarActiveTintColor: "#fff",
       tabBarStyle: { 
-        backgroundColor: "#242526"
+        backgroundColor: "#FF1493"
       },
       headerStyle: { 
-        backgroundColor: "#242526"
+        backgroundColor: "#FF1493"
       },
       tabBarInactiveTintColor: "#3a3b3c",
       tabBarLabel: "Home"
@@ -101,10 +101,10 @@ function Routing({navigation, socket}) {
         },
         tabBarActiveTintColor: "#fff",
         tabBarStyle: { 
-          backgroundColor: "#242526"
+          backgroundColor: "#FF1493"
         },
         headerStyle: { 
-          backgroundColor: "#242526"
+          backgroundColor: "#FF1493"
         },
         tabBarInactiveTintColor: "#3a3b3c",
         tabBarLabel: "Chat",
@@ -129,10 +129,10 @@ function Routing({navigation, socket}) {
         },
         tabBarActiveTintColor: "#fff",
         tabBarStyle: { 
-          backgroundColor: "#242526"
+          backgroundColor: "#FF1493"
         },
         headerStyle: { 
-          backgroundColor: "#242526"
+          backgroundColor: "#FF1493"
         },
         tabBarInactiveTintColor: "#3a3b3c",
         tabBarLabel: "Profile",

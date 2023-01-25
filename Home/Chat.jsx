@@ -79,7 +79,7 @@ function Chat({ navigation, route }) {
 
   navigation.setOptions({
     headerStyle: {
-      backgroundColor: "#242526",
+      backgroundColor: "#FF1493",
     },
     headerTitle: () => { 
        if(allusr.length < 1){ 
@@ -215,7 +215,7 @@ const handleButtonPress = () => {
                         style={{
                           width: "100%",
                           height:'100%',
-                          backgroundColor: "#151516",
+                          backgroundColor: "#FF1493",
                           position: "relative",
                           bottom: 0,
                         }}
@@ -281,25 +281,21 @@ const handleButtonPress = () => {
                                                 }}>
                                                     <View style={{
                                                         padding: 10,
-                                                        borderBottomColor: '#80808049',
-                                                        borderBottomWidth: 1
+                                                        backgroundColor: '#FF69B4',
+                                                        maxWidth: '80%',
+                                                        borderRadius: 10,
+                                                        marginLeft: 10,
+                                                        marginTop: 5
                                                     }}>
                                                         <Text style={{
-                                                            color: 'gray',
-                                                            shadowColor: 'black',
-                                                            shadowOffset: { width: 2, height: 2 },
-                                                            shadowOpacity: 1,
-                                                            shadowRadius: 2,
+                                                            color: 'black',
                                                         }}>
                                                             Me
                                                         </Text>
                                                         <Autolink  text={CryptoJS.AES.decrypt(m.message_sent, "La:?balumo#ham$ed01234:#?").toString(CryptoJS.enc.Utf8)} style={{
                                                             color: "white",
                                                             marginTop: 10,
-                                                            shadowColor: 'black',
-                                                            shadowOffset: { width: 2, height: 2 },
-                                                            shadowOpacity: 1,
-                                                            shadowRadius: 2,
+                                                            
                                                         }}/>
                                                         </View>
                                                 </Pressable>
@@ -310,9 +306,17 @@ const handleButtonPress = () => {
                                                 <Pressable key={n}>
                                                 <View style={{
                                                     padding: 10,
-                                                    borderBottomColor: '#80808049',
-                                                    borderBottomWidth: 1
+                                                    justifyContent: 'center',
+                                                    alignItems: 'flex-end',
+                                                    padding: 5
                                                 }}>
+                                                    <View style={{
+                                                      backgroundColor: 'black',
+                                                      width: '100%',
+                                                      maxWidth: '80%',
+                                                      padding: 10,
+                                                      borderRadius: 10
+                                                    }}>
                                                     <Text style={{
                                                         color: 'lightblue',
                                                         shadowColor: 'black',
@@ -330,6 +334,7 @@ const handleButtonPress = () => {
                                                             shadowOpacity: 1,
                                                             shadowRadius: 2,
                                                         }}/>
+                                                    </View>
                                                 </View>
                                             </Pressable>
                                             )
@@ -353,7 +358,7 @@ const handleButtonPress = () => {
                               width: "100%",
                               marginTop: foc,
                               padding: 10,
-                              backgroundColor: "#242526",
+                              backgroundColor: "#FF1493",
                               justifyContent: "space-between",
                               alignItems: "center",
                               height: 80,
@@ -383,7 +388,7 @@ const handleButtonPress = () => {
                                 style={{
                                   padding: 10,
                                   borderWidth: 1,
-                                  borderColor: "gray",
+                                  borderColor: "white",
                                   color: "white",
                                   borderRadius: 5,
                                   width: "100%",
@@ -391,7 +396,7 @@ const handleButtonPress = () => {
                                   maxHeight: 70,
                                 }}
                                 ref={inputRef}
-                                placeholderTextColor={"gray"}
+                                placeholderTextColor={"white"}
                                 selectTextOnFocus
                                 selectionColor={"white"}
                                 keyboardAppearance={"dark"}

@@ -10,7 +10,7 @@ import io from 'socket.io-client'
 
 
 const socket = new io("https://orgappbackend.mohamedbrima.repl.co", { 
-  reconnectionAttempts: 6
+  reconnectionAttempts: 2
 })
 
 export default function App() {
@@ -80,11 +80,12 @@ export default function App() {
 
   return (
     <>
+    <StatusBar hidden/>
       { 
         [state].map((val, key) => { 
           if(val.payload === true){ 
             return ( 
-              <ImageBackground  source={{uri: "https://media0.giphy.com/media/OK5LK5zLFfdm/giphy.gif?cid=ecf05e47cytw6uzgc99k7vdjg9zud5rskw3266kmad9jtcld&rid=giphy.gif&ct=g"}} key={key} style={{
+              <ImageBackground  source={{uri: "https://tinder.com/static/tinder.png"}} key={key} style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -93,8 +94,7 @@ export default function App() {
                 backgroundColor: schme === "dark" ? "black" : "#f0f2f5"
               }}>
                 <StatusBar hidden/>
-                <Image source={{uri: "https://orgainze.vercel.app/mainlogo.png"}} style={{width: 50, height: 50, marginBottom: 20}}/>
-                <Text style={{fontWeight: 'bold', fontSize: 30, textShadowColor: 'black', color: 'white'}}>Loading...</Text>
+               
               </ImageBackground>
             )
           }
